@@ -1,3 +1,28 @@
+*****************************************************************************
+*                                                                           *
+* VSU: Black-Paralysis (VSU:BP) does not at this time run against any       *
+* of the releases in GitHub and needs some major work to update it against  *
+* the current Vega Strike Engine (VSE). Help updating is certainly welcome. *
+* Please file issues for anything found:                                    *
+*                                                                           *
+*       Issues: https://github.com/vegastrike/vsu-black-paralysis/issues    *
+*  Issue Board: https://github.com/orgs/vegastrike/projects/29              *
+* Pull Request: https://github.com/vegastrike/vsu-black-paralysis/pulls     *
+*                                                                           *
+* Please be aware that VSE is undergoing some major refactoring to help     *
+* maintainability and we might not address issues with VSU:BP until after   *
+* some of the effort there has been done.                                   *
+*                                                                           *
+* Our goal with VSU:BP is to:                                               *
+* 1. Continue the communicated vision of having a small game that can be    *
+*    used to build other games.                                             *
+* 2. Have a small game to use to learn about VSE and Vega Strike Asset      *
+*    building with.                                                         *
+*                                                                           *
+* Please be aware that at this time VSU:BP likely does not even compile     *
+* or run even at the most basic levels on current, up-to-date systems.      *
+*                                                                           *
+*****************************************************************************
 
                          VSU: Black-Paralysis
                <http://black-paralysis.sourceforge.net>
