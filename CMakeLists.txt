@@ -103,7 +103,6 @@ INSTALL(DIRECTORY textures/ DESTINATION ${CMAKE_INSTALL_DATADIR}/black-paralysis
 # Install root asset files
 INSTALL(FILES Version.txt DESTINATION ${CMAKE_INSTALL_DATADIR}/black-paralysis)
 INSTALL(FILES factions.xml DESTINATION ${CMAKE_INSTALL_DATADIR}/black-paralysis)
-INSTALL(FILES vegastrike.config DESTINATION ${CMAKE_INSTALL_DATADIR}/black-paralysis)
 INSTALL(FILES vega-license.txt DESTINATION ${CMAKE_INSTALL_DATADIR}/black-paralysis)
 INSTALL(FILES engine.json DESTINATION ${CMAKE_INSTALL_DATADIR}/black-paralysis)
 INSTALL(FILES bindings.json DESTINATION ${CMAKE_INSTALL_DATADIR}/black-paralysis)
