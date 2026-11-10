@@ -1,11 +1,22 @@
 # Logs
 *.log
 
-# VIM files
+# VIM and editor swap files
 *.sw?
+*~
+
+# Build and IDE artifacts
+build/
+packages/
+CMakeFiles/
+CMakeCache.txt
+*.pyc
+__pycache__/
+.vs/
+.vscode/
+.idea/
 
 # Autotools junk
-*~
 autom4te.cache
 Makefile
 config.h
@@ -13,3 +24,4 @@ config.status
 
 # Build stuff
 *.pk3
+
