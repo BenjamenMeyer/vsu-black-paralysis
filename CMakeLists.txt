@@ -107,6 +107,7 @@ INSTALL(FILES vegastrike.config DESTINATION ${CMAKE_INSTALL_DATADIR}/black-paral
 INSTALL(FILES vega-license.txt DESTINATION ${CMAKE_INSTALL_DATADIR}/black-paralysis)
 INSTALL(FILES engine.json DESTINATION ${CMAKE_INSTALL_DATADIR}/black-paralysis)
 INSTALL(FILES bindings.json DESTINATION ${CMAKE_INSTALL_DATADIR}/black-paralysis)
+INSTALL(FILES theme.json DESTINATION ${CMAKE_INSTALL_DATADIR}/black-paralysis)
 
 # Platform-specific desktop integration and launcher installation
 IF (CMAKE_SYSTEM_NAME STREQUAL Linux)
