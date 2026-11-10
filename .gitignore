@@ -16,12 +16,7 @@ __pycache__/
 .vscode/
 .idea/
 
-# Autotools junk
-autom4te.cache
-Makefile
-config.h
-config.status
-
 # Build stuff
 *.pk3
+
 
