@@ -1,0 +1,44 @@
+#!/bin/bash
+#====================================
+# @file   : vsuBlackParalysis
+# @brief  : Launcher script for Vega Strike Universe: Black Paralysis
+#====================================
+# Copyright (C) 2026 Benjamen R. Meyer, and other Vega Strike contributors.
+#
+# This file is part of Vega Strike: Black Paralysis ("VSU:BP").
+#
+# VSU:BP is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 2 of the License, or
+# (at your option) any later version.
+#
+# VSU:BP is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with VSU:BP.  If not, see <https://www.gnu.org/licenses/>.
+
+set -e
+
+VS_LOCAL_SHARE_DIR="/usr/local/share/black-paralysis"
+VS_SHARE_DIR="/usr/share/black-paralysis"
+
+DATA_DIR=""
+if [ -n "${VS_DATA_DIR}" ] && [ -d "${VS_DATA_DIR}" ]; then
+    DATA_DIR="${VS_DATA_DIR}"
+elif [ -d "./sectors" ] && [ -f "./Version.txt" ]; then
+    DATA_DIR="$(pwd)"
+elif [ -d "${VS_LOCAL_SHARE_DIR}" ]; then
+    DATA_DIR="${VS_LOCAL_SHARE_DIR}"
+elif [ -d "${VS_SHARE_DIR}" ]; then
+    DATA_DIR="${VS_SHARE_DIR}"
+else
+    echo "Error: Unable to locate Black Paralysis game asset directory."
+    echo "Please install game assets or set the VS_DATA_DIR environment variable."
+    exit 1
+fi
+
+echo "Starting Vega Strike Universe: Black Paralysis from: ${DATA_DIR}"
+exec vegastrike-engine -D "${DATA_DIR}" "$@"

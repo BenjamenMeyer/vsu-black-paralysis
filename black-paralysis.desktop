@@ -1,0 +1,16 @@
+[Desktop Entry]
+Categories=Game;Simulation;
+Comment[en_US]=3D OpenGL spaceflight simulator - Black Paralysis
+Comment=3D OpenGL spaceflight simulator - Black Paralysis
+GenericName[en_US]=vsubp
+GenericName=vsubp
+Exec=vsuBlackParalysis
+Icon=black-paralysis.png
+MimeType=
+Name[en_US]=Vega Strike Universe: Black Paralysis
+Name=Vega Strike Universe: Black Paralysis
+Path=
+StartupNotify=true
+Terminal=false
+TerminalOptions=
+Type=Application
