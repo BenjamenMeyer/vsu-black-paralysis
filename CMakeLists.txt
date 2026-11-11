@@ -112,6 +112,7 @@ INSTALL(FILES config.json DESTINATION ${CMAKE_INSTALL_DATADIR}/black-paralysis)
 INSTALL(FILES master_part_list.json DESTINATION ${CMAKE_INSTALL_DATADIR}/black-paralysis)
 INSTALL(FILES master_component_list.json DESTINATION ${CMAKE_INSTALL_DATADIR}/black-paralysis)
 INSTALL(FILES master_asteroid_list.json DESTINATION ${CMAKE_INSTALL_DATADIR}/black-paralysis)
+INSTALL(FILES master_ship_list.json DESTINATION ${CMAKE_INSTALL_DATADIR}/black-paralysis)
 
 # Platform-specific desktop integration and launcher installation
 IF (CMAKE_SYSTEM_NAME STREQUAL Linux)
