@@ -18,5 +18,7 @@ __pycache__/
 
 # Build stuff
 *.pk3
+imgui.ini
+
 
 

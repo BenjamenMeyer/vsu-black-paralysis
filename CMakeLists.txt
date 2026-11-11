@@ -88,6 +88,11 @@ INSTALL(DIRECTORY ai/ DESTINATION ${CMAKE_INSTALL_DATADIR}/black-paralysis/ai
 INSTALL(DIRECTORY animations/ DESTINATION ${CMAKE_INSTALL_DATADIR}/black-paralysis/animations
         PATTERN "*.am" EXCLUDE)
 
+INSTALL(DIRECTORY bases/ DESTINATION ${CMAKE_INSTALL_DATADIR}/black-paralysis/bases
+        PATTERN "*.swp" EXCLUDE
+        PATTERN "*~" EXCLUDE
+        PATTERN "__pycache__" EXCLUDE)
+
 INSTALL(DIRECTORY cockpits/ DESTINATION ${CMAKE_INSTALL_DATADIR}/black-paralysis/cockpits
         PATTERN "*.am" EXCLUDE)
 
@@ -98,8 +103,18 @@ INSTALL(DIRECTORY meshes/ DESTINATION ${CMAKE_INSTALL_DATADIR}/black-paralysis/m
 
 INSTALL(DIRECTORY mission/ DESTINATION ${CMAKE_INSTALL_DATADIR}/black-paralysis/mission)
 
+INSTALL(DIRECTORY modules/ DESTINATION ${CMAKE_INSTALL_DATADIR}/black-paralysis/modules
+        PATTERN "*.swp" EXCLUDE
+        PATTERN "*~" EXCLUDE
+        PATTERN "__pycache__" EXCLUDE)
+
 INSTALL(DIRECTORY programs/ DESTINATION ${CMAKE_INSTALL_DATADIR}/black-paralysis/programs
         PATTERN "*.am" EXCLUDE)
+
+INSTALL(DIRECTORY python/ DESTINATION ${CMAKE_INSTALL_DATADIR}/black-paralysis/python
+        PATTERN "*.swp" EXCLUDE
+        PATTERN "*~" EXCLUDE
+        PATTERN "__pycache__" EXCLUDE)
 
 INSTALL(DIRECTORY sectors/ DESTINATION ${CMAKE_INSTALL_DATADIR}/black-paralysis/sectors)
 
@@ -122,6 +137,7 @@ INSTALL(DIRECTORY universe/ DESTINATION ${CMAKE_INSTALL_DATADIR}/black-paralysis
 
 # Install root asset files
 INSTALL(FILES Version.txt DESTINATION ${CMAKE_INSTALL_DATADIR}/black-paralysis)
+INSTALL(FILES New_Game DESTINATION ${CMAKE_INSTALL_DATADIR}/black-paralysis)
 INSTALL(FILES factions.xml DESTINATION ${CMAKE_INSTALL_DATADIR}/black-paralysis)
 INSTALL(FILES vega-license.txt DESTINATION ${CMAKE_INSTALL_DATADIR}/black-paralysis)
 INSTALL(FILES engine.json DESTINATION ${CMAKE_INSTALL_DATADIR}/black-paralysis)
