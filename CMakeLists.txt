@@ -94,6 +94,9 @@ INSTALL(DIRECTORY mission/ DESTINATION ${CMAKE_INSTALL_DATADIR}/black-paralysis/
 
 INSTALL(DIRECTORY sectors/ DESTINATION ${CMAKE_INSTALL_DATADIR}/black-paralysis/sectors)
 
+INSTALL(DIRECTORY sounds/ DESTINATION ${CMAKE_INSTALL_DATADIR}/black-paralysis/sounds
+        PATTERN "*.am" EXCLUDE)
+
 INSTALL(DIRECTORY sprites/ DESTINATION ${CMAKE_INSTALL_DATADIR}/black-paralysis/sprites
         PATTERN "*.am" EXCLUDE)
 
