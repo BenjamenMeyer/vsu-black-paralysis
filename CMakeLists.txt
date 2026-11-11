@@ -27,17 +27,17 @@ SET(vsuBP_VERSION_PATCH "0")
 
 # Auto-populate with the git hash of the build
 IF (DEFINED ENV{SHORT_SHA} AND NOT "$ENV{SHORT_SHA}" STREQUAL "")
-    SET(vsuBP_VERSION_TWEAK "$ENV{SHORT_SHA}")
+    SET(vsuBP_GIT_HASH "$ENV{SHORT_SHA}")
 ELSE ()
     EXECUTE_PROCESS(
         COMMAND git rev-parse --short HEAD
         WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
-        OUTPUT_VARIABLE vsuBP_VERSION_TWEAK
+        OUTPUT_VARIABLE vsuBP_GIT_HASH
         OUTPUT_STRIP_TRAILING_WHITESPACE
     )
 ENDIF ()
 
-SET(vsuBP_VERSION_LONG_STR "${vsuBP_VERSION_MAJOR}.${vsuBP_VERSION_MINOR}.${vsuBP_VERSION_PATCH}-${vsuBP_VERSION_TWEAK}")
+SET(vsuBP_VERSION_LONG_STR "${vsuBP_VERSION_MAJOR}.${vsuBP_VERSION_MINOR}.${vsuBP_VERSION_PATCH}-${vsuBP_GIT_HASH}")
 SET(vsuBP_VERSION_SHORT_STR "${vsuBP_VERSION_MAJOR}.${vsuBP_VERSION_MINOR}.${vsuBP_VERSION_PATCH}")
 SET(vsuBP_PKG_VERSION_STR "${vsuBP_VERSION_MAJOR}.${vsuBP_VERSION_MINOR}.${vsuBP_VERSION_PATCH}")
 
@@ -63,14 +63,20 @@ SET(CPACK_IGNORE_FILES
     \\\\.vs/
     \\\\.vscode/
     ".*\\\\.pyc"
+    ".*~"
+    ".*\\\\.swp"
+    "migration_plan\\\\.md"
 )
 SET(CPACK_SOURCE_IGNORE_FILES
-    build/
-    packages/
-    \\\\.git/
-    \\\\.vs/
-    \\\\.vscode/
-    ".*\\\\.pyc"
+    "/[.]git/"
+    "/build/"
+    "/packages/"
+    "/\\.vs/"
+    "/\\.vscode/"
+    "\\.pyc$"
+    "~$"
+    "\\.swp$"
+    "migration_plan\\.md"
 )
 
 # Install asset directories
@@ -152,9 +158,10 @@ SET(CPACK_CONTACT "maintainers@vega-strike.org")
 IF (DEFINED ENV{TAG_NAME})
     SET(vsuBP_PACKAGE_VERSION_STR "$ENV{TAG_NAME}")
 ELSE (DEFINED ENV{TAG_NAME})
-    SET(vsuBP_PACKAGE_VERSION_STR "${vsuBP_VERSION_MAJOR}.${vsuBP_VERSION_MINOR}.${vsuBP_VERSION_PATCH}-0.${vsuBP_VERSION_TWEAK}")
+    SET(vsuBP_PACKAGE_VERSION_STR "${vsuBP_VERSION_MAJOR}.${vsuBP_VERSION_MINOR}.${vsuBP_VERSION_PATCH}-0.${vsuBP_GIT_HASH}")
 ENDIF (DEFINED ENV{TAG_NAME})
 
+SET(CPACK_PACKAGE_VERSION "${vsuBP_PACKAGE_VERSION_STR}")
 SET(CPACK_SOURCE_PACKAGE_FILE_NAME "${CPACK_PACKAGE_NAME}_${vsuBP_PACKAGE_VERSION_STR}-Source")
 SET(CPACK_SOURCE_GENERATOR "TXZ")
 
@@ -191,7 +198,7 @@ ELSEIF (CMAKE_SYSTEM_NAME STREQUAL Linux)
         MESSAGE(STATUS "Configuring Debian Packaging")
         SET(CPACK_DEBIAN_PACKAGE_NAME "vsubp")
         SET(CPACK_DEBIAN_PACKAGE_MAINTAINER "maintainers@vega-strike.org")
-        SET(CPACK_DEBIAN_COMPRESSION_TYPE "bzip2")
+        SET(CPACK_DEBIAN_COMPRESSION_TYPE "xz")
         SET(CPACK_DEBIAN_PACKAGE_DEPENDS "vega-strike")
         SET(CPACK_PACKAGE_FILE_NAME "${CPACK_DEBIAN_PACKAGE_NAME}_${vsuBP_PACKAGE_VERSION_STR}")
         SET(CPACK_DEBIAN_PACKAGE_SECTION "games")
