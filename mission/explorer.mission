@@ -16,13 +16,11 @@
 		<var name="savegame" value="_explorer_test_difficulty" />
 	</variables>
         <flightgroups>
-            <flightgroup name="Cook" faction="confed" type="goddard" ainame="default" waves="1" nr_ships="7">
+            <flightgroup name="Cook" faction="confed" type="goddard" ainame="default" waves="1" nr_ships="1">
                 <pos x="-95124024.543917" y="412089916.256812" z="-110779667.398050" />  
                 <rot x="180.0" y="180.0" z="180.0" />
             </flightgroup>
         </flightgroups>
 	<python>
-#from privateer import privateer
-#my_obj=privateer(20000,40000,500,3,2,.6,.25,.1,400000,2000)
 	</python>
 </mission>
