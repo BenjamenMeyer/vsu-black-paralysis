@@ -98,6 +98,9 @@ INSTALL(DIRECTORY meshes/ DESTINATION ${CMAKE_INSTALL_DATADIR}/black-paralysis/m
 
 INSTALL(DIRECTORY mission/ DESTINATION ${CMAKE_INSTALL_DATADIR}/black-paralysis/mission)
 
+INSTALL(DIRECTORY programs/ DESTINATION ${CMAKE_INSTALL_DATADIR}/black-paralysis/programs
+        PATTERN "*.am" EXCLUDE)
+
 INSTALL(DIRECTORY sectors/ DESTINATION ${CMAKE_INSTALL_DATADIR}/black-paralysis/sectors)
 
 INSTALL(DIRECTORY sounds/ DESTINATION ${CMAKE_INSTALL_DATADIR}/black-paralysis/sounds
@@ -106,11 +109,16 @@ INSTALL(DIRECTORY sounds/ DESTINATION ${CMAKE_INSTALL_DATADIR}/black-paralysis/s
 INSTALL(DIRECTORY sprites/ DESTINATION ${CMAKE_INSTALL_DATADIR}/black-paralysis/sprites
         PATTERN "*.am" EXCLUDE)
 
+INSTALL(DIRECTORY techniques/ DESTINATION ${CMAKE_INSTALL_DATADIR}/black-paralysis/techniques
+        PATTERN "*.am" EXCLUDE)
+
 INSTALL(DIRECTORY textures/ DESTINATION ${CMAKE_INSTALL_DATADIR}/black-paralysis/textures
         PATTERN "*.am" EXCLUDE)
 
 INSTALL(DIRECTORY units/ DESTINATION ${CMAKE_INSTALL_DATADIR}/black-paralysis/units
         PATTERN "*.am" EXCLUDE)
+
+INSTALL(DIRECTORY universe/ DESTINATION ${CMAKE_INSTALL_DATADIR}/black-paralysis/universe)
 
 # Install root asset files
 INSTALL(FILES Version.txt DESTINATION ${CMAKE_INSTALL_DATADIR}/black-paralysis)

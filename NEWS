@@ -10,6 +10,21 @@
 NEWS
 ------
 
+2026-11-11  Vega Strike Contributors  <maintainers@vega-strike.org>
+
+    * Version 0.1.0 (Modern Engine Compatibility):
+        - Migrated build system from Autotools to modern CMake 3.22+.
+        - Modernised core engine configuration to JSON format (Asset API Version 3):
+          engine.json, bindings.json, theme.json, controls.json, config.json.
+        - Converted legacy CSV manifests and unit tables to modern JSON:
+          master_part_list.json, master_component_list.json, master_asteroid_list.json,
+          master_ship_list.json, units.json, ships.json, weapons.json.
+        - Imported authentic rendering shaders (programs/ and techniques/).
+        - Verified and restored player spacecraft (Goddard/Cook), jump point network,
+          and refinery installation assets.
+        - Cleaned, validated, and de-interlaced image assets across the repository.
+        - Full runtime compatibility verified against Vega Strike Engine 0.11.0+.
+
 2004-11-24  Daniel Aleksandrow  <dandandaman@users.sourceforge.net>
 
     * Version 20050902 done.

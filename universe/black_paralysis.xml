@@ -1,0 +1,26 @@
+<?xml version="1.0" ?>
+<galaxy>
+    <planets>
+        <var name="texture" value="white"/>
+        <var name="texture_min" value="0"/>
+        <var name="texture_max" value="0"/>
+        <var name="texture_ext" value="texture"/>
+        <var name="atmosphere" value="false"/>
+        <var name="lights" value=""/>
+        <var name="initial" value=""/>
+        <var name="inhabitable" value="true"/>
+    </planets>
+    <systems>
+        <sector name="Test_Sector">
+            <system name="Isaac">
+                <var name="faction" value="confed"/>
+            </system>
+            <system name="Calion">
+                <var name="faction" value="confed"/>
+            </system>
+            <system name="Nan">
+                <var name="faction" value="confed"/>
+            </system>
+        </sector>
+    </systems>
+</galaxy>
