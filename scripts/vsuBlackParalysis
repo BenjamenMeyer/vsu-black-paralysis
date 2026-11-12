@@ -40,5 +40,18 @@ else
     exit 1
 fi
 
+ENGINE_BIN="vegastrike-engine"
+if [ -n "${VS_ENGINE_BIN}" ] && [ -x "${VS_ENGINE_BIN}" ]; then
+    ENGINE_BIN="${VS_ENGINE_BIN}"
+elif [ -n "${VS_ENGINE_PATH}" ] && [ -x "${VS_ENGINE_PATH}/vegastrike-engine" ]; then
+    ENGINE_BIN="${VS_ENGINE_PATH}/vegastrike-engine"
+elif command -v vegastrike-engine >/dev/null 2>&1; then
+    ENGINE_BIN="vegastrike-engine"
+elif [ -x "/usr/local/bin/vegastrike-engine" ]; then
+    ENGINE_BIN="/usr/local/bin/vegastrike-engine"
+elif [ -x "/usr/bin/vegastrike-engine" ]; then
+    ENGINE_BIN="/usr/bin/vegastrike-engine"
+fi
+
 echo "Starting Vega Strike Universe: Black Paralysis from: ${DATA_DIR}"
-exec vegastrike-engine -D "${DATA_DIR}" "$@"
+exec "${ENGINE_BIN}" -D "${DATA_DIR}" "$@"

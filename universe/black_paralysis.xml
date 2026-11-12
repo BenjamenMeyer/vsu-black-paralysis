@@ -22,5 +22,10 @@
                 <var name="faction" value="confed"/>
             </system>
         </sector>
+        <sector name="Special">
+            <system name="Empty">
+                <var name="faction" value="neutral"/>
+            </system>
+        </sector>
     </systems>
 </galaxy>
