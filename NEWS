@@ -24,6 +24,7 @@ NEWS
           and refinery installation assets.
         - Cleaned, validated, and de-interlaced image assets across the repository.
         - Implemented main menu base interface (bases/main_menu.py, mission/main_menu.mission) and supporting Python runtime modules for seamless normal startup and campaign launching.
+        - Restored authentic historical design documentation and campaign lore (doc/lore/PLANNING.md), original layered splash artwork (resources/artwork/), and Blender XMESH utilities (scripts/tools/).
         - Full runtime compatibility verified against Vega Strike Engine 0.11.0+.
 
 2004-11-24  Daniel Aleksandrow  <dandandaman@users.sourceforge.net>

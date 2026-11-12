@@ -100,6 +100,22 @@ or you can contact me on the black-paralysis mailing list:
           o Swap space: Real men will hot-plug new memory modules as needed.
           o HD: I mirror Sourceforge.net, can you?
 
+--- Lore and Historical Development Resources ---
+
+Authentic historical lore, design notes, and development assets authored by
+Daniel Aleksandrow have been restored for reference:
+
+    * Design & Lore Notes: doc/lore/PLANNING.md
+      Details the Arachnis Sector backstory, Ancient drive research,
+      the Aeran attack, and planned mission paths.
+
+    * Historical Artwork & Branding: resources/artwork/
+      Contains layered GIMP master splash screen source (splash.xcf.bz2)
+      and original project logo banners (BP_logo.png, logo_header.jpg, stardrop.jpg).
+
+    * 3D Model Conversion Utilities: scripts/tools/
+      Contains original Blender XMESH conversion tools (blend2xmesh.py, xmesh2blend.py).
+
 --- Licensing ---
 
 Vega Strike: Black Paralysis is free software: you can redistribute it and/or
