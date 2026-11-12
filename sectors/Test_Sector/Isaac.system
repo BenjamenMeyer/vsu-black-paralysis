@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<system name="Isaac" background="system_backgrounds/sigma" nearstars="1" stars="1" starspread="1"  x="0" y="0" z="0" scalesystem="100">
+<system name="Isaac" background="system_backgrounds/sigma" nearstars="500" stars="1000" starspread="150"  x="0" y="0" z="0" scalesystem="100">
 	<Light>
 		<ambient red=".03" green="0.03" blue="0.03" />
 		<diffuse  red="1" green="1" blue="1" />
@@ -8,10 +8,10 @@
 
 
     <planet name="Awe" file="sol/sun.png" radius="695500" gravity="20" x="0" y="0" z="0"  Red=".9" Green=".9" Blue=".9" ReflectNoLight="true" light="0">
-        <fog>
+<!--        <fog>
             <FogElement file="atmosphere_body.bfxm" ScaleAtmosphereHeight="1.000" red=".9" blue=".7" green=".8" alpha="1.0" dired="1" diblue="1" digreen="1" dialpha="1" concavity=".3" focus=".6" minalpha="0" maxalpha=".5"/>
             <FogElement file="atmosphere_halo.bfxm" ScaleAtmosphereHeight="1.000" red=".9" blue=".7" green=".8" alpha="1.0" dired="1" diblue="1" digreen="1" dialpha="1" concavity=".3" focus=".6" minalpha="0" maxalpha=".5"/>
-        </fog>
+        </fog> -->
 
         <planet name="Wistfullness" file="sol2/mercury-trew.jpg" radius="2439.5" gravity="20" ri="46e6" rj="0" rk="0" sk="-69.8e6" sj="0" si="0" day="5053.1960" Year="757976.9624" position="0"/>
 

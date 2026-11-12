@@ -14,7 +14,7 @@
     },
     "gl_accelerated_visual": true,
     "input": {
-        "device": "joystick",
+        "device": "mouse",
         "mouse_preset": "glide_mouse",
         "joystick_preset": "joy_normal",
         "keyboard": {
@@ -37,7 +37,7 @@
             "clamp_axes": true,
             "warp_mouse": false,
             "mouse_sensitivity": 50.0,
-            "mouse_cursor": false,
+            "mouse_cursor": true,
             "reverse_mouse_spr": true
         }
     },

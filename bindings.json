@@ -491,11 +491,11 @@
     "LeftKey": {
       "keyboard": [
         {
-          "key": "cursor-right",
+          "key": "cursor-left",
           "modifier": "none"
         },
         {
-          "key": "keypad-6",
+          "key": "keypad-4",
           "modifier": "none"
         }
       ]
@@ -822,11 +822,11 @@
     "RightKey": {
       "keyboard": [
         {
-          "key": "cursor-left",
+          "key": "cursor-right",
           "modifier": "none"
         },
         {
-          "key": "keypad-4",
+          "key": "keypad-6",
           "modifier": "none"
         }
       ]
@@ -1205,13 +1205,13 @@
       "inverse": false
     },
     "x": {
-      "source": "joystick",
+      "source": "mouse",
       "joystick": 0,
       "axis": 0,
       "inverse": false
     },
     "y": {
-      "source": "joystick",
+      "source": "mouse",
       "joystick": 0,
       "axis": 1,
       "inverse": false

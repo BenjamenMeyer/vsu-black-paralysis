@@ -5,7 +5,7 @@
 
 	<variables>
 		<var name="credits" value="13500"/>
-		<var name="defaultplayer" value="Cook"/>
+		<var name="defaultplayer" value="blue"/>
 		<var name="mission_name" value="Vega Strike: Black Paralysis Main Menu" />
 		<var name="difficulty" value=".25"/>
 		<var name="system" value="Special/Empty" />
@@ -14,7 +14,8 @@
 	</variables>
 	
     <flightgroups>
-        <flightgroup name="Cook" faction="confed" type="goddard" ainame="default" waves="1" nr_ships="1">
+		<!-- need at least one, to avoid messing with the engine -->
+        <flightgroup name="Shlimazel" faction="privateer" type="Goddard" ainame="default" waves="1" nr_ships="1">
 			<pos x="119990000000" y="-9000000" z="-109990000000.0"/>
 		</flightgroup>
     </flightgroups>

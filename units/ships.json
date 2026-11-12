@@ -253,6 +253,33 @@
                 },
                 {
                     "data": {
+                        "Key": "goddard",
+                        "Mass": "4800",
+                        "Shield_Recharge": "200",
+                        "Warp_Capacitor": "450",
+                        "Primary_Capacitor": "4000",
+                        "Reactor_Recharge": "500",
+                        "Jump_Drive_Present": "1",
+                        "Maneuver_Yaw": "100000",
+                        "Maneuver_Pitch": "100000",
+                        "Maneuver_Roll": "100000",
+                        "Afterburner_Speed_Governor": "220",
+                        "Default_Speed_Governor": "220",
+                        "ITTS": "1",
+                        "Radar_Color": "1",
+                        "Radar_Range": "150000000",
+                        "Tracking_Cone": "15",
+                        "Max_Cone": "180",
+                        "Lock_Cone": "90",
+                        "Hold_Volume": "1000",
+                        "Prohibited_Upgrades": "mult_shady_moreupgrade;mult_shady_morethrust;mult_shady_moreshields;mult_shady_moregunrecharge;mult_shady_moreshieldrecharge;mult_shady_moreturning;upgrades/Overdrive:1;upgrades/Capacitors:1;upgrades/Reactors:1;upgrades/Armor:1;upgrades/Sensors:1;upgrades/Shield_Systems:1;upgrades/Passenger_Quarters:1;upgrades/Repair_Systems:1;upgrades/ECM_Systems:1",
+                        "Mounts": "{torpedo;8;800;heavy-missile;1;-2;7;;;;;;;;;1;1}{torpedo;8;800;heavy-missile;-1;-2;7;;;;;;;;;1;1}{torpedo;8;800;heavy-missile;1;-2;-1;;;;;;;;;1;1}{torpedo;8;800;heavy-missile;-1;-2;-1;;;;;;;;;1;1}{FS_MWRF_Laser;;;light autotracking;12.5;0.1;0;;;;;;;;;1;1}{FS_MWRF_Laser;;;light autotracking;-12.5;0.1;0;;;;;;;;;1;1}{FS_MWRF_Laser;;;light autotracking;12.5;-0.1;0;;;;;;;;;1;1}{FS_MWRF_Laser;;;light autotracking;-12.5;-0.1;0;;;;;;;;;1;1}{DisruptorBeam;;;light medium autotracking;-2;0;12;;;;;;;;;1;1}{DisruptorBeam;;;light medium autotracking;2;-0;12;;;;;;;;;1;1}{RelativisticParticleBeam;;;capship-light;-0.1;-2;13;;;;;;;;;1;1}{RelativisticParticleBeam;;;capship-light;0.1;-2;13;;;;;;;;;1;1}{friendorfoe;5;80;light-missile medium-missile;4.1;0;-3;;;;;;;;;1;1}{friendorfoe;5;80;light-missile medium-missile;3.9;0;-3;;;;;;;;;1;1}{friendorfoe;5;80;light-missile medium-missile;-4.1;0;-3;;;;;;;;;1;1}{friendorfoe;5;80;light-missile medium-missile;-3.9;0;-3;;;;;;;;;1;1}{friendorfoe;5;80;light-missile medium-missile;8.1;0;-3;;;;;;;;;1;1}{friendorfoe;5;80;light-missile medium-missile;7.9;0;-3;;;;;;;;;1;1}{friendorfoe;5;80;light-missile medium-missile;-8.1;0;-3;;;;;;;;;1;1}{friendorfoe;5;80;light-missile medium-missile;-7.9;0;-3;;;;;;;;;1;1}",
+                        "armor": "1700.0",
+                        "shield": "3750.0"
+                    }
+                },
+                {
+                    "data": {
                         "Key": "Goddard.milspec",
                         "Textual_Description": "Recently developed Andolian bomber. One of the most advanced and most expensive human craft currently in service.",
                         "Mass": "4800",
