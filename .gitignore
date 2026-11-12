@@ -20,6 +20,10 @@ __pycache__/
 
 # Build stuff
 *.pk3
+_CPack_Packages/
+*.tar.*
+*.deb
+*.rpm
 imgui.ini
 
 
