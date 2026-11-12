@@ -1,24 +1,30 @@
 #!/bin/bash
-#====================================
+##
+# ====================================
 # @file   : vsuBlackParalysis
 # @brief  : Launcher script for Vega Strike Universe: Black Paralysis
-#====================================
+# ====================================
+#
+# Vega Strike: Black Paralysis - Space Simulation, Combat and Trading
 # Copyright (C) 2026 Benjamen R. Meyer, and other Vega Strike contributors.
 #
-# This file is part of Vega Strike: Black Paralysis ("VSU:BP").
+# https://github.com/vegastrike/vsu-black-paralysis
 #
-# VSU:BP is free software: you can redistribute it and/or modify
+# This file is part of Vega Strike: Black Paralysis.
+#
+# Vega Strike: Black Paralysis is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
-# the Free Software Foundation, either version 2 of the License, or
+# the Free Software Foundation, either version 3 of the License, or
 # (at your option) any later version.
 #
-# VSU:BP is distributed in the hope that it will be useful,
+# Vega Strike: Black Paralysis is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU General Public License for more details.
 #
 # You should have received a copy of the GNU General Public License
-# along with VSU:BP.  If not, see <https://www.gnu.org/licenses/>.
+# along with Vega Strike: Black Paralysis.  If not, see <https://www.gnu.org/licenses/>.
+#
 
 set -e
 
