@@ -12,7 +12,7 @@
 #
 # Vega Strike: Black Paralysis is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
-# the Free Software Foundation, either version 2 of the License, or
+# the Free Software Foundation, either version 3 of the License, or
 # (at your option) any later version.
 #
 # Vega Strike: Black Paralysis is distributed in the hope that it will be useful,
@@ -140,6 +140,7 @@ SCRIPT_LIKE_COMMENT = ['##', '#', '#']
 SCRIPT_LIKE_COMMENT_REGEX = re.compile(r'^ *#+( *)(.*)$')
 
 SHEBANG_REGEX = re.compile(r'^#!(.*)$')
+PYTHON_CODING_COMMENT_REGEX = re.compile(r'^ *#+ *-\*- *coding: *(.*)$')
 
 C_LIKE_COMMENTS = ['.c', '.cpp', '.h', '.hpp', '.h.in', '.yacc', '.lex']
 SCRIPT_LIKE_COMMENTS = ['.py', '.cmake', '.deprecated.cmake', '.txt', '.sh', '.ps1', '.yml', '.yaml', '.x11.sh']
@@ -147,6 +148,10 @@ SCRIPT_LIKE_COMMENTS = ['.py', '.cmake', '.deprecated.cmake', '.txt', '.sh', '.p
 ROW_OF_EQUALS_SIGNS_REGEX = re.compile(r'^={5,200}$')
 ROW_OF_ASTERISKS_REGEX = re.compile(r'^\*{5,200}$')
 ROW_OF_SLASHES_REGEX = re.compile(r'^/{5,200}$')
+ROW_OF_DASHES_REGEX = re.compile(r'^-{5,200}$')
+SCRIPT_DESCRIPTION_REGEX = re.compile(r"^(?:Vega Strike script for [^\n]+|Description:[^\n]*)$", re.IGNORECASE)
+CONTACT_INTERNET_REGEX = re.compile(r"^(?:Contact|Internet):[^\n]*$")
+THIS_PROGRAM_IS_FREE_SOFTWARE_REGEX = re.compile(r"^This program is free software; you can redistribute it and/or\nmodify it under the terms of the GNU General Public License\nas published by the Free Software Foundation; either version [23]\nof the License, or \(at your option\) any later version\.(?:\n\n?(?:Author|Version|Description):[^\n]*)*$", re.MULTILINE)
 
 
 def find_git_root() -> Path:
@@ -257,19 +262,25 @@ def uncomment_start(line: str, script_like_file: bool) -> str:
 def uncomment_middle(line: str, script_like_file: bool, num_prefix_whitespace_chars: int) -> tuple[str, int]:
     if num_prefix_whitespace_chars < 0:
         if script_like_file:
-            if SCRIPT_LIKE_COMMENT_REGEX.match(line):
-                num_prefix_whitespace_chars = len(SCRIPT_LIKE_COMMENT_REGEX.match(line).group(1))
-                return SCRIPT_LIKE_COMMENT_REGEX.match(line).group(2), num_prefix_whitespace_chars
+            m = SCRIPT_LIKE_COMMENT_REGEX.match(line)
+            if m:
+                if m.group(2) != '':
+                    num_prefix_whitespace_chars = len(m.group(1))
+                return m.group(2), num_prefix_whitespace_chars
             else:
                 print(f"'{line}' is not the middle of a comment")
                 return line, num_prefix_whitespace_chars
         else:
             if C_LIKE_INDIVIDUAL_COMMENT_REGEX.match(line):
-                num_prefix_whitespace_chars = len(C_LIKE_INDIVIDUAL_COMMENT_REGEX.match(line).group(1))
-                return C_LIKE_INDIVIDUAL_COMMENT_REGEX.match(line).group(2), num_prefix_whitespace_chars
+                m = C_LIKE_INDIVIDUAL_COMMENT_REGEX.match(line)
+                if m.group(2) != '':
+                    num_prefix_whitespace_chars = len(m.group(1))
+                return m.group(2), num_prefix_whitespace_chars
             elif C_LIKE_COMMENT_BLOCK_MIDDLE_REGEX.match(line):
-                num_prefix_whitespace_chars = len(C_LIKE_COMMENT_BLOCK_MIDDLE_REGEX.match(line).group(1))
-                return C_LIKE_COMMENT_BLOCK_MIDDLE_REGEX.match(line).group(2), num_prefix_whitespace_chars
+                m = C_LIKE_COMMENT_BLOCK_MIDDLE_REGEX.match(line)
+                if m.group(2) != '':
+                    num_prefix_whitespace_chars = len(m.group(1))
+                return m.group(2), num_prefix_whitespace_chars
             else:
                 print(f"'{line}' is not the middle of a comment")
                 return line, num_prefix_whitespace_chars
@@ -369,6 +380,31 @@ def upsert_license_header(filepath: Path) -> None:
             # Parse the beginning of the input file
             first_line: str = input_file.readline()
             if SHEBANG_REGEX.match(first_line):
+                script_like_file = True
+                output_file.write(first_line)
+                second_line: str = input_file.readline()
+                if PYTHON_CODING_COMMENT_REGEX.match(second_line):
+                    output_file.write(second_line)
+                    second_line = input_file.readline()
+                if is_start_of_a_comment(second_line, script_like_file):
+                    license_header_commented += second_line
+                    in_license_header_comment = True
+                    license_header_uncommented_lines.append(uncomment_start(second_line, script_like_file))
+                    individually_commented = True
+                elif second_line == '\n':
+                    third_line: str = input_file.readline()
+                    if is_start_of_a_comment(third_line, script_like_file):
+                        output_file.write(second_line)
+                        license_header_commented += third_line
+                        in_license_header_comment = True
+                        license_header_uncommented_lines.append(uncomment_start(third_line, script_like_file))
+                        individually_commented = True
+                    else:
+                        already_read_lines = third_line
+                else:
+                    already_read_lines = second_line
+
+            elif PYTHON_CODING_COMMENT_REGEX.match(first_line):
                 script_like_file = True
                 output_file.write(first_line)
                 second_line: str = input_file.readline()
@@ -482,7 +518,16 @@ def upsert_license_header(filepath: Path) -> None:
                         uncommented_line, num_prefix_whitespace_chars = uncomment_middle(current_line, script_like_file, num_prefix_whitespace_chars)
                         license_header_uncommented_lines.append(uncommented_line)
 
-            # Trim leading blank lines
+            # Trim leading/trailing blank lines and decorative separator bars
+            while len(license_header_uncommented_lines) > 0 and (ROW_OF_DASHES_REGEX.match(license_header_uncommented_lines[0]) or license_header_uncommented_lines[0] == ''):
+                license_header_uncommented_lines.pop(0)
+
+            while len(license_header_uncommented_lines) > 0 and (ROW_OF_DASHES_REGEX.match(license_header_uncommented_lines[-1]) or license_header_uncommented_lines[-1] == ''):
+                license_header_uncommented_lines.pop(-1)
+
+            while len(license_header_uncommented_lines) > 0 and SCRIPT_DESCRIPTION_REGEX.match(license_header_uncommented_lines[0]):
+                license_header_uncommented_lines.pop(0)
+
             while len(license_header_uncommented_lines) > 0 and license_header_uncommented_lines[0] == '':
                 license_header_uncommented_lines.pop(0)
 
@@ -519,6 +564,25 @@ def upsert_license_header(filepath: Path) -> None:
                 while not ROW_OF_EQUALS_SIGNS_REGEX.match(license_header_uncommented_lines[0]):
                     output_copyright_notice += license_header_uncommented_lines.pop(0) + '\n'
                 output_copyright_notice += license_header_uncommented_lines.pop(0) + '\n'
+                while len(license_header_uncommented_lines) > 0 and license_header_uncommented_lines[0] == '':
+                    license_header_uncommented_lines.pop(0)
+                if len(license_header_uncommented_lines) == 0:
+                    print(f"File '{filepath}' has file header but no copyright/license block. Adding")
+                    output_copyright_notice += "\nVega Strike: Black Paralysis - Space Simulation, Combat and Trading\n"
+                    output_copyright_notice += "Copyright (C) 2003-2005 Daniel Aleksandrow <dandandaman@users.sourceforge.net>\n"
+                    output_copyright_notice += "Copyright (C) 2003-" + current_year + " The Vega Strike Contributors\n"
+                    output_copyright_notice += THIS_FILE_IS_PART_OF_VEGA_STRIKE_TEXT
+                    if individually_commented:
+                        output_file.write(comment_block(output_copyright_notice, script_like_file) + '\n')
+                    else:
+                        output_file.write(comment_block(output_copyright_notice, script_like_file))
+                    if already_read_lines:
+                        output_file.write(already_read_lines)
+                    output_file.write(input_file.read())
+                    output_file.close()
+                    copystat(filepath, output_file.name)
+                    move(output_file.name, filepath)
+                    return
             else:
                 found_copyright: bool = False
                 for current_line in license_header_uncommented_lines:
@@ -614,6 +678,7 @@ def upsert_license_header(filepath: Path) -> None:
                 found_current_year: bool = False
                 license_header_uncommented_split_lines_1 = license_header_uncommented_concat_1.splitlines()
                 license_header_uncommented_split_lines_1.pop(0)
+                license_header_uncommented_lines.pop(0)
                 for current_copyright_line in license_header_uncommented_split_lines_1:
                     if BASIC_COPYRIGHT_REGEX.match(current_copyright_line) or LARGELY_REWRITTEN_BY_REGEX.match(current_copyright_line) or VEGA_STRIKE_CONTRIBUTORS_REGEX.match(current_copyright_line):
                         output_copyright_notice += current_copyright_line + '\n'
@@ -674,14 +739,20 @@ def upsert_license_header(filepath: Path) -> None:
                 if not found_current_year:
                     output_copyright_notice += "Copyright (C) 2003-" + current_year + " The Vega Strike Contributors\n"
 
-            # Trim leading blank lines again after copyright clause(s)
-            while len(license_header_uncommented_lines) > 0 and license_header_uncommented_lines[0] == '':
+            # Trim leading blank lines and metadata lines again after copyright clause(s)
+            while len(license_header_uncommented_lines) > 0 and (CONTACT_INTERNET_REGEX.match(license_header_uncommented_lines[0]) or license_header_uncommented_lines[0] in ('', '.')):
                 license_header_uncommented_lines.pop(0)
 
             license_header_uncommented_concat_2 = '\n'.join(license_header_uncommented_lines)
 
             if THIS_FILE_IS_PART_OF_VEGA_STRIKE_REGEX.match(license_header_uncommented_concat_2):
                 print(f"File '{filepath}': This file is part of Vega Strike")
+                output_copyright_notice += THIS_FILE_IS_PART_OF_VEGA_STRIKE_TEXT
+                match_group_split_lines = license_header_uncommented_concat_2.splitlines()
+                for i in match_group_split_lines:
+                    license_header_uncommented_lines.pop(0)
+            elif THIS_PROGRAM_IS_FREE_SOFTWARE_REGEX.match(license_header_uncommented_concat_2):
+                print(f"File '{filepath}': This program is free software; GNU GPL")
                 output_copyright_notice += THIS_FILE_IS_PART_OF_VEGA_STRIKE_TEXT
                 match_group_split_lines = license_header_uncommented_concat_2.splitlines()
                 for i in match_group_split_lines:
