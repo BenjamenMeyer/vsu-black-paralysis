@@ -4,6 +4,8 @@
 # VIM and editor swap files
 *.sw?
 *~
+.*.kate-swp
+*.kate-swp
 
 # Build and IDE artifacts
 build/
