@@ -85,16 +85,19 @@ def lnum(ship_stats, key, divider = 1.0) -> str:
     return num
 
 def get(ship_stats, key):
-    return ship_stats[key]
+    return ship_stats.get(key, '')
 
 def get_bool(ship_stats, key):
-    s = ship_stats[key]
+    s = ship_stats.get(key, '0')
     if(s == 'TRUE' or s=='1'): 
         return True
     return False
     
 def get_int(ship_stats, key):
-    return int(ship_stats[key])
+    try:
+        return int(ship_stats[key])
+    except (KeyError, ValueError, TypeError):
+        return 0
 
 def get_dbl(ship_stats, key, divider = 1.0):
     try:
@@ -122,7 +125,8 @@ def near_equal(a,b):
 
 def get_notes(ship_stats):
     text = f"{green}[NOTES]{newline}{newline}"
-    text += f"{grey}#-c{ship_stats['Textual_Description']}{newline}{newline}"
+    desc = ship_stats.get('Textual_Description', '')
+    text += f"{grey}#-c{desc}{newline}{newline}"
     return text
 
 def get_variant(key):
@@ -137,6 +141,8 @@ def get_variant(key):
         return 'Variant: #-cCivilian'
     if key.endswith('milspec'):
         return 'Variant: #-cMilspec'
+    if key.endswith('hunter'):
+        return 'Variant: #-cHunter'
     if key.endswith('rg'):
         return 'Variant: #-cRegional Guard'
     if key.endswith('rgspec'):
@@ -165,8 +171,10 @@ def get_ypr(ship_stats, prefix, divider_maneuver, left = '_Left', right = '_Righ
 
 # General
 def get_general(ship_stats):
+    name = ship_stats.get('Name', '')
+    key = ship_stats.get(KEY, '')
     text = f"{green}[GENERAL INFORMATION]{newline}"
-    text += f"#-c{newline}{light_grey}Model:          #-c{ship_stats['Name']}{light_grey}    {get_variant(ship_stats[KEY])}{newline}"
+    text += f"#-c{newline}{light_grey}Model:          #-c{name}{light_grey}    {get_variant(key)}{newline}"
     text += f"{light_grey}Mass:           #-c{lnum(ship_stats,'Mass'):>5} metric tons{newline}"
     text += f"{light_grey}Hold volume:    #-c{lnum(ship_stats,'Hold_Volume'):>5} cubic meters{newline}"
     text += f"{light_grey}Upgrade volume: #-c{lnum(ship_stats,'Upgrade_Storage_Volume'):>5} cubic meters{newline}"
@@ -236,13 +244,18 @@ def get_radar(ship_stats):
     max_cone = get_dbl(ship_stats,'Max_Cone', 180 / math.pi) 
     tracking_cone = get_dbl(ship_stats,'Tracking_Cone', 180 / math.pi)
     lock_cone = get_dbl(ship_stats,'Lock_Cone', 180 / math.pi)
-    itts = ship_stats['ITTS']
-    iff = ship_stats['Radar_Color']
+    itts = ship_stats.get('ITTS', '0')
+    iff = ship_stats.get('Radar_Color', '0')
 
     # ecm
-    ecm_parts = ship_stats['ecm'].split('/')
-    ecm_current = int(ecm_parts[0])
-    ecm_max = int(ecm_parts[1])
+    ecm = ship_stats.get('ecm', '0/0')
+    ecm_parts = ecm.split('/') if '/' in str(ecm) else [str(ecm), str(ecm)]
+    try:
+        ecm_current = int(ecm_parts[0])
+        ecm_max = int(ecm_parts[1])
+    except (ValueError, IndexError):
+        ecm_current = 0
+        ecm_max = 0
     # TODO: drain here is hard coded. Get from config
     ecm_drain = ecm_max * 0.05 * megajoules_multiplier 
 
