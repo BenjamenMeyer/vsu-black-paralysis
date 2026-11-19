@@ -1,0 +1,41 @@
+name: PR Validation
+
+on:
+  pull_request:
+  push:
+    branches: [ master ]
+
+permissions:
+  contents: read
+  pull-requests: read
+
+jobs:
+  validate:
+    name: Syntax & Package Validation
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Run JSON syntax validation
+        run: python3 scripts/test_json_syntax.py
+
+      - name: Run XML and sprite syntax validation
+        run: python3 scripts/test_xml_syntax.py
+
+      - name: Configure CMake
+        run: cmake -B build
+
+      - name: Run CTest
+        run: ctest --test-dir build --output-on-failure
+
+      - name: Build & Package (CPack TXZ)
+        run: |
+          cmake --build build
+          cpack --config build/CPackConfig.cmake -G TXZ

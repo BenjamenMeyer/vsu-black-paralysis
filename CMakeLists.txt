@@ -258,4 +258,10 @@ ELSE ()
     SET(CPACK_GENERATOR "TXZ")
 ENDIF ()
 
+# Automated verification tests
+ENABLE_TESTING()
+FIND_PACKAGE(Python3 REQUIRED COMPONENTS Interpreter)
+ADD_TEST(NAME test_json_syntax COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/scripts/test_json_syntax.py)
+ADD_TEST(NAME test_xml_syntax COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/scripts/test_xml_syntax.py)
+
 INCLUDE(CPack)
