@@ -1,31 +1,54 @@
 
                          VSU: Black-Paralysis
-               <http://black-paralysis.sourceforge.net>
+                https://github.com/vegastrike/vsu-black-paralysis
                          
-                           Version  20041124
+                            Version 0.1.0
                          
                Copyright © 2003-2005  Daniel Aleksandrow
-                  <dandandaman@users.sourceforge.net>
+               Copyright © 2023-2026  Vega Strike Contributors
 
 NEWS
 ------
 
-2026-11-11  Vega Strike Contributors  <maintainers@vega-strike.org>
+2026-11-20  Vega Strike Contributors  <maintainers@vega-strike.org>
 
-    * Version 0.1.0 (Modern Engine Compatibility):
-        - Migrated build system from Autotools to modern CMake 3.22+.
-        - Modernised core engine configuration to JSON format (Asset API Version 3):
-          engine.json, bindings.json, theme.json, controls.json, config.json.
-        - Converted legacy CSV manifests and unit tables to modern JSON:
-          master_part_list.json, master_component_list.json, master_asteroid_list.json,
-          master_ship_list.json, units.json, ships.json, weapons.json.
-        - Imported authentic rendering shaders (programs/ and techniques/).
-        - Verified and restored player spacecraft (Goddard/Cook), jump point network,
-          and refinery installation assets.
-        - Cleaned, validated, and de-interlaced image assets across the repository.
-        - Implemented main menu base interface (bases/main_menu.py, mission/main_menu.mission) and supporting Python runtime modules for seamless normal startup and campaign launching.
-        - Restored authentic historical design documentation and campaign lore (doc/lore/PLANNING.md), original layered splash artwork (resources/artwork/), and Blender XMESH utilities (scripts/tools/).
-        - Full runtime compatibility verified against Vega Strike Engine 0.11.0+.
+    * Version 0.1.0 (Modern Engine Compatibility & Universe Expansion):
+        - Engine Compatibility & Architecture:
+          + Migrated build system from Autotools to modern CMake 3.22+ and multi-target CPack packaging (.tar.xz, .deb, .rpm).
+          + Modernized core engine configuration to JSON format (Asset API Version 3):
+            engine.json, bindings.json, theme.json, controls.json, config.json.
+          + Converted legacy CSV manifests and unit tables to modern JSON:
+            master_part_list.json, master_component_list.json, master_asteroid_list.json,
+            master_ship_list.json, units.json, ships.json, weapons.json.
+          + Full runtime compatibility verified against Vega Strike Engine 0.11.0+.
+          + Python 3 runtime support across all base interface rooms and game modules.
+          + Replaced legacy fixed-function pipeline with GLSL rendering shaders (programs/ and techniques/).
+          + Implemented main menu base interface (bases/main_menu.py, mission/main_menu.mission) and supporting runtime modules for seamless normal startup and campaign launching.
+
+        - Universe & Multi-System Expansion:
+          + Expanded Isaac system: Added star Isaac Prime, volcanic world Perdition, terrestrial habitable world Perseverance with surface spaceport, orbital trade station Arachnis Commerce Interchange (Commerce_Center), mined asteroid outpost Ancient Fissure Mining Outpost (MiningBase), and deep-space Refinery.
+          + Added Calion system: Warm amber star lighting, volcanic inner planet Scorched Threshold, colony world Aegis Harbor, orbital station Aegis Transfer Concourse (Commerce_Center), and ringed gas giant Calion Major with helium-3 mining base Calion Helium Extraction Hub.
+          + Added Nan system: Cool blue star lighting, glacial colony world Frostfall with orbital exchange Frostfall Orbital Exchange (Commerce_Center), asteroid belt installation Nan Outer Belt Refinery (MiningBase), and ringed gas giant Nan Leviathan.
+          + Established circular jump network in universe/black_paralysis.xml forming a complete navigational loop: Isaac <-> Calion <-> Nan <-> Isaac.
+
+        - Flyable Ship Roster & Base Dealerships:
+          + Restored 5 flyable player vessel classes with authentic 3D models, cockpits, engine thruster meshes, and sound fx:
+            Llama (light courier), Plowshare (merchant freighter), Schroedinger (fast patrol interceptor),
+            Hyena (medium fighter), and Lancelot (heavy superiority fighter).
+          + Populated shipyard inventories and upgrade equipment across commercial centers, refineries, and planetary spaceports.
+
+        - Historical Lore & Asset Preservation:
+          + 100% preservation of original soundtrack playlists, sound effects, AI logic, and cockpits.
+          + Restored original design documentation and campaign lore (doc/lore/PLANNING.md), original layered splash artwork (resources/artwork/), and Blender XMESH utilities (scripts/tools/).
+
+        - Asset Standardization & Automated Testing:
+          + Unwrapped all legacy DDS textures and standardized on PNG and JPG image formats across base rooms, station models, and cockpits.
+          + Maintained cubemap background engine compatibility via symlinks (sigma_*.image -> sigma_*.jpg).
+          + Added automated test suite for JSON syntax (scripts/test_json_syntax.py), XML/sprite descriptor syntax (scripts/test_xml_syntax.py), and asset cross-reference integrity (scripts/verify_asset_references.py).
+          + Added GitHub Actions continuous integration workflow (.github/workflows/validate.yml) running all test suites and CPack packaging builds.
+
+        - Licensing:
+          + Upgraded repository license to GNU General Public License Version 3 or later (GPLv3+).
 
 2004-11-24  Daniel Aleksandrow  <dandandaman@users.sourceforge.net>
 
