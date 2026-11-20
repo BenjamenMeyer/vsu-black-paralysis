@@ -29,6 +29,9 @@ jobs:
       - name: Run XML and sprite syntax validation
         run: python3 scripts/test_xml_syntax.py
 
+      - name: Verify cross-asset link integrity
+        run: python3 scripts/verify_asset_references.py
+
       - name: Configure CMake
         run: cmake -B build
 
