@@ -1,0 +1,53 @@
+#!/bin/bash
+#====================================
+# @file   : package
+# @brief  : package up vsuBP
+# @usage  : script/package
+# @param  : none
+#====================================
+# Copyright (C) 2026 Vega Strike Contributors
+#
+# This file is part of Vega Strike: Black Paralysis ("vsuBP").
+#
+# vsuBP is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# vsuBP is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with vsuBP.  If not, see <https://www.gnu.org/licenses/>.
+
+set -e
+
+echo "----------------------------"
+echo "--- package | vsuBP ---"
+echo "----------------------------"
+
+ROOT_DIR=$(pwd)
+BUILD_DIR=$ROOT_DIR/build
+PACKAGE_DIR=$ROOT_DIR/packages
+
+mkdir -p "$PACKAGE_DIR"
+
+cd "$BUILD_DIR"
+
+# Build distribution package (.deb, .rpm, or .tar.xz)
+make package || cmake --build . --target package
+
+# Build source tarball
+make package_source || cmake --build . --target package_source
+
+# Ensure all packages are copied to packages/
+for f in *.deb *.rpm *.srpm *.tar.* *.zip; do
+    if [ -f "$f" ]; then
+        echo "Copying $f to $PACKAGE_DIR"
+        cp "$f" "$PACKAGE_DIR/"
+    fi
+done
+
+cd "$ROOT_DIR"

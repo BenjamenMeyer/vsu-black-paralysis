@@ -1,0 +1,41 @@
+#!/bin/bash
+#====================================
+# @file   : build
+# @brief  : build vsuBP
+# @usage  : script/build
+# @param  : none
+#====================================
+# Copyright (C) 2026 Vega Strike Contributors
+#
+# This file is part of Vega Strike: Black Paralysis ("vsuBP").
+#
+# vsuBP is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# vsuBP is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with vsuBP.  If not, see <https://www.gnu.org/licenses/>.
+
+set -e
+
+echo "--------------------------"
+echo "--- build | vsuBP ---"
+echo "--------------------------"
+
+ROOT_DIR=$(pwd)
+BUILD_DIR=$ROOT_DIR/build
+SRC_DIR=$ROOT_DIR
+
+mkdir -pv "$BUILD_DIR" && cd "$BUILD_DIR"
+
+cmake "$@" "$SRC_DIR"
+
+cmake --build "$BUILD_DIR"
+
+cd "$ROOT_DIR"
