@@ -14,12 +14,18 @@
         <sector name="Test_Sector">
             <system name="Isaac">
                 <var name="faction" value="confed"/>
+                <var name="xyz" value="0.0 0.0 0.0"/>
+                <var name="jumps" value="Test_Sector/Calion Test_Sector/Nan"/>
             </system>
             <system name="Calion">
                 <var name="faction" value="confed"/>
+                <var name="xyz" value="15.0 0.0 10.0"/>
+                <var name="jumps" value="Test_Sector/Isaac Test_Sector/Nan"/>
             </system>
             <system name="Nan">
                 <var name="faction" value="confed"/>
+                <var name="xyz" value="-15.0 0.0 10.0"/>
+                <var name="jumps" value="Test_Sector/Calion Test_Sector/Isaac"/>
             </system>
         </sector>
         <sector name="Special">
