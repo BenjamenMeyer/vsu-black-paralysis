@@ -261,7 +261,9 @@ ENDIF ()
 # Automated verification tests
 ENABLE_TESTING()
 FIND_PACKAGE(Python3 REQUIRED COMPONENTS Interpreter)
-ADD_TEST(NAME test_json_syntax COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/scripts/test_json_syntax.py)
-ADD_TEST(NAME test_xml_syntax COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/scripts/test_xml_syntax.py)
+ADD_TEST(NAME test_json_syntax COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/scripts/test_json_syntax.py --dir ${CMAKE_CURRENT_SOURCE_DIR})
+ADD_TEST(NAME test_xml_syntax COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/scripts/test_xml_syntax.py --dir ${CMAKE_CURRENT_SOURCE_DIR})
+ADD_TEST(NAME test_asset_integrity COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/scripts/verify_asset_references.py --dir ${CMAKE_CURRENT_SOURCE_DIR})
+SET_TESTS_PROPERTIES(test_json_syntax test_xml_syntax test_asset_integrity PROPERTIES WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR})
 
 INCLUDE(CPack)
