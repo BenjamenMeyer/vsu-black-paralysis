@@ -213,7 +213,8 @@ SET(CPACK_SOURCE_GENERATOR "TXZ")
 
 IF (CMAKE_SYSTEM_NAME STREQUAL Windows)
     MESSAGE(STATUS "Configuring Packaging for Windows")
-    SET(CPACK_PACKAGE_ICON "${CMAKE_CURRENT_SOURCE_DIR}\\\\favicon.ico")
+    SET(CPACK_NSIS_MUI_ICON "${CMAKE_CURRENT_SOURCE_DIR}\\\\vega.ico")
+    SET(CPACK_NSIS_MUI_UNIICON "${CMAKE_CURRENT_SOURCE_DIR}\\\\vega.ico")
     SET(CPACK_NSIS_DISPLAY_NAME "Vega Strike Universe: Black Paralysis")
     SET(CPACK_NSIS_MANIFEST_DPI_AWARE true)
     SET(CPACK_NSIS_ENABLE_UNINSTALL_BEFORE_INSTALL YES)
@@ -222,7 +223,7 @@ IF (CMAKE_SYSTEM_NAME STREQUAL Windows)
     SET(CPACK_NSIS_CONTACT "maintainers@vega-strike.org")
     SET(CPACK_NSIS_MODIFY_PATH OFF)
     SET(CPACK_NSIS_CREATE_ICONS_EXTRA
-        "CreateShortCut '$SMPROGRAMS\\\\$STARTMENU_FOLDER\\\\Vega Strike Universe - Black Paralysis.lnk' 'C:\\\\Program Files\\\\VegaStrike-0.10\\\\bin\\\\vegastrike-engine.exe' -D\"$INSTDIR\\\\share\\\\black-paralysis\""
+        "CreateShortCut '$SMPROGRAMS\\\\$STARTMENU_FOLDER\\\\Vega Strike Universe - Black Paralysis.lnk' 'C:\\\\Program Files\\\\VegaStrike-0.11\\\\bin\\\\vegastrike-engine.exe' -D\"$INSTDIR\\\\share\\\\black-paralysis\""
     )
     SET(CPACK_NSIS_DELETE_ICONS_EXTRA
         "Delete '$SMPROGRAMS\\\\$START_MENU\\\\Vega Strike Universe - Black Paralysis.lnk'"
