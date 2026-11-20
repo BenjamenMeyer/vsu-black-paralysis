@@ -2,13 +2,21 @@
                          VSU: Black-Paralysis
                 https://github.com/vegastrike/vsu-black-paralysis
                          
-                            Version 0.1.0
+                            Version 0.1.1
                          
                Copyright © 2003-2005  Daniel Aleksandrow
                Copyright © 2023-2026  Vega Strike Contributors
 
 NEWS
 ------
+
+2026-11-20  Vega Strike Contributors  <maintainers@vega-strike.org>
+
+    * Version 0.1.1 (Windows NSIS Packaging Fix):
+        - Corrected NSIS icon variables in CMakeLists.txt (CPACK_NSIS_MUI_ICON and CPACK_NSIS_MUI_UNIICON)
+          to resolve makensis header bitmap failure on Windows CI runners.
+        - Updated Windows desktop shortcut target to VegaStrike-0.11.
+        - Enhanced script/package.ps1 to dump NSISOutput.log upon build failure for immediate diagnostics.
 
 2026-11-20  Vega Strike Contributors  <maintainers@vega-strike.org>
 
