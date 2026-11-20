@@ -1,8 +1,31 @@
 <?xml version="1.0"?>
-<system name="Sigma" background="backgrounds/sigma" nearstars="500" stars="1000" starspread="150">
-<Light>
-	<ambient red="0.000000" green="0.000000" blue="0.000000"/>
-	<diffuse red="1.000000" green="0.731131" blue="0.689742"/>
-	<specular red="1.000000" green="0.534553" blue="0.475744"/>
-</Light>
+<system name="Calion" background="system_backgrounds/sigma" nearstars="500" stars="1000" starspread="150" x="15" y="0" z="10" scalesystem="100">
+    <Light>
+        <ambient red="0.03" green="0.03" blue="0.03"/>
+        <diffuse red="1.000000" green="0.820000" blue="0.720000"/>
+        <specular red="1.000000" green="0.700000" blue="0.600000"/>
+    </Light>
+
+    <planet name="Calion Prime" file="system_maps/generic/star_1.jpg" radius="620000" gravity="20" x="0" y="0" z="0" Red="1.0" Green=".85" Blue=".7" ReflectNoLight="true" light="0">
+
+        <!-- Inner Volcanic World -->
+        <planet name="Scorched Threshold" file="system_maps/generic/magma_1.jpg" radius="3100" gravity="15" ri="55e6" rj="0" rk="0" sk="-72e6" sj="0" si="0" day="4200" year="920000" position="0.1"/>
+
+        <!-- Habitable Terrestrial World -->
+        <planet name="Aegis Harbor" file="system_maps/generic/temperate_1.jpg" unit="carribean" radius="6420" gravity="20" ri="145e6" rj="0" rk="0" sk="-145e6" sj="0" si="0" day="86400" year="31557600" position="0.3" faction="confed">
+            <unit name="Aegis Transfer Concourse" file="Commerce_Center" gravity="0" ri="28000" sk="-28000" year="110000" position="0.5" faction="confed"/>
+        </planet>
+
+        <!-- Gas Giant System -->
+        <planet name="Calion Major" file="system_maps/generic/gas_giant_1.png" radius="68200" gravity="22" ri="720e6" rj="0" rk="0" sk="-760e6" sj="0" si="0" day="36" year="35000000" position="0.55">
+            <Ring file="system_maps/generic/ring_1.png" innerradius="115000" outerradius="138000" wrapx="100" wrapy="1" year="1e11"/>
+
+            <planet name="Calion Minor" file="sol/europa.png" radius="1620" gravity="0" ri="540000" sk="-540000" year="28000" position="0.2"/>
+
+            <unit name="Calion Helium Extraction Hub" file="refinery" gravity="0" ri="1250000" sk="-1250000" year="650000000" position="0.45" faction="confed"/>
+
+            <planet name="Jump Point: Isaac System" file="sol/ganymede.png" radius="2500" gravity="0" ri="1650000" sk="-1650000" year="82000" position="0.7" destination="Test_Sector/Isaac"/>
+            <planet name="Jump Point: Nan System" file="sol/callisto.png" radius="2400" gravity="0" ri="2200000" sk="-2200000" year="130000" position="0.85" destination="Test_Sector/Nan"/>
+        </planet>
+    </planet>
 </system>

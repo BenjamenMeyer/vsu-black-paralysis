@@ -1,8 +1,29 @@
 <?xml version="1.0"?>
-<system name="Sigma" background="backgrounds/sigma" nearstars="500" stars="1000" starspread="150">
-<Light>
-	<ambient red="0.000000" green="0.000000" blue="0.000000"/>
-	<diffuse red="1.000000" green="0.731131" blue="0.689742"/>
-	<specular red="1.000000" green="0.534553" blue="0.475744"/>
-</Light>
+<system name="Nan" background="system_backgrounds/sigma" nearstars="500" stars="1000" starspread="150" x="-15" y="0" z="10" scalesystem="100">
+    <Light>
+        <ambient red="0.03" green="0.03" blue="0.03"/>
+        <diffuse red="0.850000" green="0.920000" blue="1.000000"/>
+        <specular red="0.750000" green="0.850000" blue="1.000000"/>
+    </Light>
+
+    <planet name="Nan Prime" file="system_maps/generic/star_1.jpg" radius="575000" gravity="20" x="0" y="0" z="0" Red=".85" Green=".92" Blue="1.0" ReflectNoLight="true" light="0">
+
+        <!-- Glacial Inhabited World -->
+        <planet name="Frostfall" file="system_maps/generic/snow_1.png" unit="carribean" radius="5820" gravity="18" ri="130e6" rj="0" rk="0" sk="-130e6" sj="0" si="0" day="92000" year="28000000" position="0.2" faction="confed">
+            <unit name="Frostfall Orbital Exchange" file="Commerce_Center" gravity="0" ri="22000" sk="-22000" year="95000" position="0.35" faction="confed"/>
+        </planet>
+
+        <!-- Asteroid Belt Mining Base -->
+        <unit name="Nan Outer Belt Refinery" file="MiningBase" gravity="0" ri="260e6" rj="0" rk="0" sk="-260e6" sj="0" si="0" year="48000000" position="0.4" faction="confed"/>
+
+        <!-- Gas Giant System -->
+        <planet name="Nan Leviathan" file="system_maps/generic/gas_giant_2.png" radius="74500" gravity="24" ri="690e6" rj="0" rk="0" sk="-730e6" sj="0" si="0" day="40" year="38000000" position="0.65">
+            <Ring file="planets/ring.png" innerradius="120000" outerradius="145000" wrapx="100" wrapy="1" year="1e11"/>
+
+            <planet name="Nan Sub-Zero" file="sol/io.png" radius="1780" gravity="0" ri="490000" sk="-490000" year="24000" position="0.15"/>
+
+            <planet name="Jump Point: Calion System" file="sol/ganymede.png" radius="2500" gravity="0" ri="1500000" sk="-1500000" year="75000" position="0.6" destination="Test_Sector/Calion"/>
+            <planet name="Jump Point: Isaac System" file="sol/callisto.png" radius="2400" gravity="0" ri="2050000" sk="-2050000" year="120000" position="0.8" destination="Test_Sector/Isaac"/>
+        </planet>
+    </planet>
 </system>
