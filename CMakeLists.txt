@@ -63,26 +63,42 @@ FIND_PACKAGE(LinuxDistro REQUIRED)
 INCLUDE(GNUInstallDirs)
 
 SET(CPACK_IGNORE_FILES
-    build/
-    packages/
-    \\\\.git/
-    \\\\.vs/
-    \\\\.vscode/
-    ".*\\\\.pyc"
-    ".*~"
-    ".*\\\\.swp"
-    "migration_plan\\\\.md"
+    "build/"
+    "_CPack_Packages/"
+    "packages/"
+    "/[.]git/"
+    "/[.]github/"
+    "/[.]vs/"
+    "/[.]vscode/"
+    "[.]pyc$"
+    "~$"
+    "[.]swp$"
+    "migration_plan[.]md"
+    "vsubp_.*"
+    "vsuBP_.*"
+    "[.]deb$"
+    "[.]rpm$"
+    "[.]tar[.].*"
+    "[.]zip$"
 )
 SET(CPACK_SOURCE_IGNORE_FILES
+    "build/"
+    "_CPack_Packages/"
+    "packages/"
     "/[.]git/"
-    "/build/"
-    "/packages/"
-    "/\\.vs/"
-    "/\\.vscode/"
-    "\\.pyc$"
+    "/[.]github/"
+    "/[.]vs/"
+    "/[.]vscode/"
+    "[.]pyc$"
     "~$"
-    "\\.swp$"
-    "migration_plan\\.md"
+    "[.]swp$"
+    "migration_plan[.]md"
+    "vsubp_.*"
+    "vsuBP_.*"
+    "[.]deb$"
+    "[.]rpm$"
+    "[.]tar[.].*"
+    "[.]zip$"
 )
 
 # Install asset directories
@@ -221,6 +237,7 @@ ELSEIF (CMAKE_SYSTEM_NAME STREQUAL Darwin)
     SET(CPACK_PACKAGE_FILE_NAME "${CPACK_PACKAGE_NAME}_${vsuBP_PACKAGE_VERSION_STR}_macOS_${CMAKE_SYSTEM_VERSION}_${CMAKE_SYSTEM_PROCESSOR}")
 ELSEIF (CMAKE_SYSTEM_NAME STREQUAL Linux)
     MESSAGE(STATUS "Configuring Packaging for Linux")
+    SET(CPACK_PACKAGE_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/packages")
     SET(CPACK_GENERATOR "TXZ")
 
     # Debian Package
@@ -239,7 +256,7 @@ ELSEIF (CMAKE_SYSTEM_NAME STREQUAL Linux)
     # RPM Package
     IF (VS_CAN_BUILD_RPM)
         MESSAGE(STATUS "Configuring RPM Packaging")
-        SET(CPACK_RPM_PACKAGE_LICENSE "GPLv2")
+        SET(CPACK_RPM_PACKAGE_LICENSE "GPLv3+")
         SET(CPACK_RPM_PACKAGE_URL "https://www.vega-strike.org")
         SET(CPACK_RPM_PACKAGE_NAME "vsuBP")
         SET(CPACK_RPM_PACKAGE_REQUIRES "vega-strike")
@@ -255,6 +272,7 @@ ELSEIF (CMAKE_SYSTEM_NAME STREQUAL Linux)
     ENDIF ()
 ELSE ()
     MESSAGE(STATUS "Configuring Packaging for Unknown Platform - \"${CMAKE_SYSTEM_NAME}\"")
+    SET(CPACK_PACKAGE_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/packages")
     SET(CPACK_GENERATOR "TXZ")
 ENDIF ()
 

@@ -1,63 +1,86 @@
 *****************************************************************************
 *                                                                           *
-* VSU: Black-Paralysis (VSU:BP) does not at this time run against any       *
-* of the releases in GitHub and needs some major work to update it against  *
-* the current Vega Strike Engine (VSE). Help updating is certainly welcome. *
-* Please file issues for anything found:                                    *
+* Vega Strike: Black Paralysis (VSU:BP) — Version 0.1.0                     *
 *                                                                           *
+* Black Paralysis has been modernized to run natively against the           *
+* Vega Strike Engine 0.11.0+ (Assets API Version 3).                        *
+*                                                                           *
+* Community & Development Links:                                            *
 *       Issues: https://github.com/vegastrike/vsu-black-paralysis/issues    *
 *  Issue Board: https://github.com/orgs/vegastrike/projects/29              *
-* Pull Request: https://github.com/vegastrike/vsu-black-paralysis/pulls     *
+* Pull Requests: https://github.com/vegastrike/vsu-black-paralysis/pulls     *
 *                                                                           *
-* Please be aware that VSE is undergoing some major refactoring to help     *
-* maintainability and we might not address issues with VSU:BP until after   *
-* some of the effort there has been done.                                   *
-*                                                                           *
-* Our goal with VSU:BP is to:                                               *
-* 1. Continue the communicated vision of having a small game that can be    *
-*    used to build other games.                                             *
-* 2. Have a small game to use to learn about VSE and Vega Strike Asset      *
-*    building with.                                                         *
-*                                                                           *
-* Please be aware that at this time VSU:BP likely does not even compile     *
-* or run even at the most basic levels on current, up-to-date systems.      *
+* Goals of VSU:BP:                                                          *
+* 1. Provide a lightweight, focused standalone space simulation game that   *
+*    serves as a starting point and reference for total conversion mods.    *
+* 2. Serve as a clean, modular testbed for Vega Strike Engine features     *
+*    and asset development.                                                 *
 *                                                                           *
 *****************************************************************************
 
                          VSU: Black-Paralysis
-               <http://black-paralysis.sourceforge.net>
+                https://github.com/vegastrike/vsu-black-paralysis
                          
-                           Version  20041124
+                            Version 0.1.0
                          
                Copyright © 2003-2005  Daniel Aleksandrow
-                  <dandandaman@users.sourceforge.net>
+               Copyright © 2023-2026  Vega Strike Contributors
 
 README
 ------
 
-Black-Paralysis is still in the very early stages.  The data set you have
-is not only very incomplete, but is one of many circulating through my
-home directory and various cds.  Consider yourself warned.
+Vega Strike: Black Paralysis is a lightweight, standalone space simulation
+sandbox designed to run against the Vega Strike Engine 0.11.0+ (Assets API Version 3).
 
-If your data set is under say, 2 MB in size, you have the base data set.
-The base data set is intended as a starting point for total conversion
-mods.
+Originally conceived by Daniel Aleksandrow as an unencumbered, minimal total
+conversion starter kit, Black Paralysis provides:
+- A multi-system sandbox universe (`Isaac`, `Calion`, and `Nan`) with celestial
+  bodies, dynamic star lighting, and a circular jump point navigation loop.
+- A variety of landing destinations: surface spaceports (`Perseverance`), orbital
+  commercial trade hubs (`Commerce_Center`), mined asteroid belt installations
+  (`MiningBase`), and deep-space refineries.
+- A roster of 5 flyable player vessel classes with cockpits, sound effects, engine
+  thrusters, and base shipyard dealer upgrades:
+  * Llama (Light Courier)
+  * Plowshare (Merchant Freighter)
+  * Schroedinger (Fast Patrol Interceptor)
+  * Hyena (Medium Fighter)
+  * Lancelot (Heavy Superiority Fighter)
+- Modern JSON configuration architecture replacing legacy XML configurations.
+- Embedded Python 3 base rooms, cargo terminals, news services, and mission scripts.
+- Automated syntax validation and asset cross-reference integrity test suites.
 
-The minimal data set, which comes in at about 50 MB, is intended for learning
-how to mod VS.  Most of the features are utilised to some extent, so you get
-to know what VS is capable of.
+--- Building, Packaging, and Running ---
 
-For any technical questions about modding, see the Vegastrike WIKI resource:
+Running Black Paralysis requires the `vegastrike-engine` (0.11.0+) binary:
 
-        -->  http://vegastrike.sourceforge.net/phpwiki/  <--
+    # Normal startup into the main menu:
+    vegastrike-engine -D /path/to/black-paralysis
 
-or visit the Vegastrike forums:
+    # Launching directly via launcher script:
+    VS_ENGINE_BIN=/path/to/vegastrike-engine ./scripts/vsuBlackParalysis
 
-        -->  http://vegastrike.sourceforge.net/forums/  <--
+    # Launching specific missions:
+    vegastrike-engine -D /path/to/black-paralysis mission/bp_campaign.mission
+    vegastrike-engine -D /path/to/black-paralysis mission/explorer.mission
 
-or you can contact me on the black-paralysis mailing list:
+    # Asset packaging with CMake 3.22+:
+    cmake -B build
+    cmake --build build
 
-        -->  black-paralysis-users@lists.sourceforge.net  <--
+    # Generate packages (TXZ, DEB, RPM):
+    cpack --config build/CPackConfig.cmake -G TXZ
+    cpack --config build/CPackConfig.cmake -G DEB
+    cpack --config build/CPackConfig.cmake -G RPM
+
+--- Testing & Validation ---
+
+Run the automated validation suites:
+
+    ctest --test-dir build --output-on-failure
+    python3 scripts/test_json_syntax.py
+    python3 scripts/test_xml_syntax.py
+    python3 scripts/verify_asset_references.py
 
 --- System Requirements ---
 

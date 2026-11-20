@@ -1,3 +1,23 @@
+2026-11-20  Vega Strike Contributors  <maintainers@vega-strike.org>
+
+	* (Release 0.1.0)
+	Formal 0.1.0 release modernizing Black Paralysis for Vega Strike
+	Engine 0.11.x (Assets API Version 3):
+	- Migrated build and packaging system from Autotools to modern CMake 3.22+ and CPack.
+	- Replaced legacy vegastrike.config and CSV manifests with modern JSON format.
+	- Expanded universe to 3 interconnected star systems (Isaac, Calion, Nan)
+	  forming a complete circular navigation and jump loop.
+	- Added multiple base destinations: planetary spaceports, commercial centers,
+	  and mined asteroid installations.
+	- Restored flyable ship roster (Llama, Plowshare, Schroedinger, Hyena, Lancelot)
+	  along with base ship dealership inventories and upgrade paths.
+	- Standardized image assets to native PNG and JPG formats and unwrapped all DDS files.
+	- Restored authentic historical design lore (PLANNING.md), artwork masters, and Blender tools.
+	- Introduced automated test suites for JSON/XML syntax and asset cross-reference integrity
+	  integrated with GitHub Actions CI.
+	- Upgraded licensing to GNU General Public License Version 3 or later (GPLv3+).
+
+
 2006-12-23  Daniel Aleksandrow  <dandandaman@users.sourceforge.net>
 
 	* (Cockpit)
