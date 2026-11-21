@@ -9023,7 +9023,7 @@
     },
     {
         "Key": "Commerce_Center",
-        "Directory": "./installations/Commerce_Center",
+        "Directory": "./installations/commerce_center",
         "Name": "Commerce Center",
         "Object_Type": "Installation",
         "Combat_Role": "BASE",
@@ -9705,7 +9705,7 @@
     },
     {
         "Key": "MiningBase",
-        "Directory": "./installations/MiningBase",
+        "Directory": "./installations/miningbase",
         "Name": "MiningBase",
         "Object_Type": "Installation",
         "Combat_Role": "BASE",
@@ -9952,7 +9952,7 @@
     },
     {
         "Key": "Refinery",
-        "Directory": "./installations/Refinery",
+        "Directory": "./installations/refinery",
         "Name": "Refinery",
         "Object_Type": "Installation",
         "Combat_Role": "BASE",
@@ -10867,7 +10867,7 @@
     },
     {
         "Key": "commerce_center",
-        "Directory": "./installations/Commerce_Center",
+        "Directory": "./installations/commerce_center",
         "Name": "commerce_center",
         "Object_Type": "Installation",
         "Combat_Role": "BASE",
@@ -11164,7 +11164,7 @@
     },
     {
         "Key": "miningbase",
-        "Directory": "./installations/MiningBase",
+        "Directory": "./installations/miningbase",
         "Name": "miningbase",
         "Object_Type": "Installation",
         "Combat_Role": "BASE",
@@ -11247,7 +11247,7 @@
     },
     {
         "Key": "refinery",
-        "Directory": "./installations/Refinery",
+        "Directory": "./installations/refinery",
         "Name": "refinery",
         "Object_Type": "Installation",
         "Combat_Role": "BASE",

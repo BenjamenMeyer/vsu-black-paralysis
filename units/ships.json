@@ -184,7 +184,7 @@
         {
             "data": {
                 "Key": "Goddard.blank",
-                "Directory": "./vessels/Goddard",
+                "Directory": "./vessels/goddard",
                 "Name": "Goddard",
                 "STATUS": "MANEUVOUR",
                 "Combat_Role": "BOMBER",
@@ -2778,7 +2778,7 @@
         {
             "data": {
                 "Key": "Hyena.blank",
-                "Directory": "./vessels/Hyena",
+                "Directory": "./vessels/hyena",
                 "Name": "Hyena",
                 "STATUS": "MANEUVOUR",
                 "Combat_Role": "FIGHTER",
@@ -2900,7 +2900,7 @@
         {
             "data": {
                 "Key": "Lancelot.blank",
-                "Directory": "./vessels/Lancelot",
+                "Directory": "./vessels/lancelot",
                 "Name": "Lancelot",
                 "STATUS": "MANEUVOUR",
                 "Combat_Role": "FIGHTER",
@@ -4429,7 +4429,7 @@
         {
             "data": {
                 "Key": "Schroedinger.blank",
-                "Directory": "./vessels/Schroedinger",
+                "Directory": "./vessels/schroedinger",
                 "Name": "Schroedinger",
                 "STATUS": "MANEUVOUR",
                 "Combat_Role": "INTERCEPTOR",
@@ -4833,7 +4833,7 @@
         {
             "data": {
                 "Key": "Hyena__pirates.blank",
-                "Directory": "./vessels/Hyena",
+                "Directory": "./vessels/hyena",
                 "Name": "HyenaP",
                 "STATUS": "MANEUVOUR",
                 "Combat_Role": "SCAVENGER",
@@ -4903,7 +4903,7 @@
         {
             "data": {
                 "Key": "Plowshare__pirates.blank",
-                "Directory": "./vessels/Plowshare",
+                "Directory": "./vessels/plowshare",
                 "Name": "Plowshare",
                 "STATUS": "MANEUVOUR",
                 "Combat_Role": "SCAVENGER",
@@ -5741,7 +5741,7 @@
         {
             "data": {
                 "Key": "Llama.blank",
-                "Directory": "./vessels/Llama",
+                "Directory": "./vessels/llama",
                 "Name": "Llama",
                 "STATUS": "MANEUVOUR",
                 "Combat_Role": "SHUTTLE",

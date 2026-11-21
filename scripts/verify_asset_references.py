@@ -143,8 +143,10 @@ def verify_system_references(repo_root: Path, verbose: bool = False) -> Tuple[in
                     unit_found = False
                     for candidate in (
                         units_dir / "installations" / f,
+                        units_dir / "installations" / f.lower(),
                         units_dir / "installations" / f.capitalize(),
                         units_dir / "vessels" / f,
+                        units_dir / "vessels" / f.lower(),
                         units_dir / "vessels" / f.capitalize(),
                     ):
                         if candidate.exists():

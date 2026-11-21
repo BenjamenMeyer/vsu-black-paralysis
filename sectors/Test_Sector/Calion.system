@@ -13,7 +13,7 @@
 
         <!-- Habitable Terrestrial World -->
         <planet name="Aegis Harbor" file="system_maps/generic/temperate_1.jpg" unit="carribean" radius="6420" gravity="20" ri="145e6" rj="0" rk="0" sk="-145e6" sj="0" si="0" day="86400" year="31557600" position="0.3" faction="confed">
-            <unit name="Aegis Transfer Concourse" file="Commerce_Center" gravity="0" ri="28000" sk="-28000" year="110000" position="0.5" faction="confed"/>
+            <unit name="Aegis Transfer Concourse" file="commerce_center" gravity="0" ri="28000" sk="-28000" year="110000" position="0.5" faction="confed"/>
         </planet>
 
         <!-- Gas Giant System -->

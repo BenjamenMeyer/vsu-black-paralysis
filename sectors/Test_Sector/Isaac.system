@@ -16,10 +16,10 @@
         <planet name="Wistfullness" file="sol2/mercury-trew.jpg" radius="2439.5" gravity="20" ri="46e6" rj="0" rk="0" sk="-69.8e6" sj="0" si="0" day="5053.1960" Year="757976.9624" position="0"/>
 
         <planet name="Perseverance" file="system_maps/generic/carribean_1.jpg" unit="carribean" radius="6371" gravity="20" ri="150e6" rj="0" rk="0" sk="-150e6" sj="0" si="0" day="86400" year="31557600" position="0.25" faction="confed">
-            <unit name="Arachnis Commerce Interchange" file="Commerce_Center" gravity="0" ri="25000" sk="-25000" year="100000" position="0.4" faction="confed" />
+            <unit name="Arachnis Commerce Interchange" file="commerce_center" gravity="0" ri="25000" sk="-25000" year="100000" position="0.4" faction="confed" />
         </planet>
 
-        <unit name="Ancient Fissure Mining Outpost" file="MiningBase" gravity="0" ri="280e6" rj="0" rk="0" sk="-280e6" sj="0" si="0" year="50000000" position="0.6" faction="confed" />
+        <unit name="Ancient Fissure Mining Outpost" file="miningbase" gravity="0" ri="280e6" rj="0" rk="0" sk="-280e6" sj="0" si="0" year="50000000" position="0.6" faction="confed" />
 
         <planet name="Jollity" file="sol2/jupiter_vgr2-Jonsson.jpg" radius="71492.0" gravity="20" ri="740.5e6" rj="0" rk="0" sk="-816.6e6" sj="0" si="0" day="35.640" Year="37331371.3686" position="0">
 
