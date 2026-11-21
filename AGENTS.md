@@ -111,6 +111,16 @@ transitions into flight, and behaves as expected without console exceptions or c
 6. **Licensing is GPLv3-or-later.** Keep existing file copyright headers intact. AI agents are
    credited via the git commit trailer `Co-authored-by: Antigravity <antigravity@google.com>` and
    are never added to file copyright statements.
+7. **Keep release notes, change logs, and version manifests synchronized.**
+   - **During Pull Requests**: Every PR that introduces features, fixes, or asset updates should
+     include corresponding entries in `NEWS` (user-facing notes under the active development version
+     header) and `ChangeLog` (GNU-style chronological entries).
+   - **During Version Bumps / Releases**: Update the version identifiers and change notes across
+     all relevant files:
+     - `CMakeLists.txt`: Set `vsuBP_VERSION_MAJOR`, `vsuBP_VERSION_MINOR`, and `vsuBP_VERSION_PATCH`.
+     - `NEWS`: Finalize release notes under the version header (and create a template section for the next cycle).
+     - `ChangeLog`: Prepend chronological change log entries.
+     - `README`: Update the version banner and top header metadata.
 
 ## When in doubt
 

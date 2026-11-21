@@ -1,5 +1,12 @@
 2026-11-20  Vega Strike Contributors  <maintainers@vega-strike.org>
 
+	* (Development 0.1.4)
+	- Bump development version baseline to 0.1.4.
+	- Document PR release notes and changelog synchronization requirements in AGENTS.md.
+
+
+2026-11-20  Vega Strike Contributors  <maintainers@vega-strike.org>
+
 	* (Release 0.1.3)
 	Patch release standardizing lowercase unit directory names and resolving Windows NTFS collisions:
 	- Renamed units/vessels and units/installations directories to lowercase.
