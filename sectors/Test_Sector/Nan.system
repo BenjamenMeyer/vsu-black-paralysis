@@ -10,11 +10,11 @@
 
         <!-- Glacial Inhabited World -->
         <planet name="Frostfall" file="system_maps/generic/snow_1.png" unit="carribean" radius="5820" gravity="18" ri="130e6" rj="0" rk="0" sk="-130e6" sj="0" si="0" day="92000" year="28000000" position="0.2" faction="confed">
-            <unit name="Frostfall Orbital Exchange" file="Commerce_Center" gravity="0" ri="22000" sk="-22000" year="95000" position="0.35" faction="confed"/>
+            <unit name="Frostfall Orbital Exchange" file="commerce_center" gravity="0" ri="22000" sk="-22000" year="95000" position="0.35" faction="confed"/>
         </planet>
 
         <!-- Asteroid Belt Mining Base -->
-        <unit name="Nan Outer Belt Refinery" file="MiningBase" gravity="0" ri="260e6" rj="0" rk="0" sk="-260e6" sj="0" si="0" year="48000000" position="0.4" faction="confed"/>
+        <unit name="Nan Outer Belt Refinery" file="miningbase" gravity="0" ri="260e6" rj="0" rk="0" sk="-260e6" sj="0" si="0" year="48000000" position="0.4" faction="confed"/>
 
         <!-- Gas Giant System -->
         <planet name="Nan Leviathan" file="system_maps/generic/gas_giant_2.png" radius="74500" gravity="24" ri="690e6" rj="0" rk="0" sk="-730e6" sj="0" si="0" day="40" year="38000000" position="0.65">

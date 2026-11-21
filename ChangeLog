@@ -1,5 +1,15 @@
 2026-11-20  Vega Strike Contributors  <maintainers@vega-strike.org>
 
+	* (Release 0.1.3)
+	Patch release standardizing lowercase unit directory names and resolving Windows NTFS collisions:
+	- Renamed units/vessels and units/installations directories to lowercase.
+	- Removed redundant mixed-case symlinks to eliminate NTFS case conflicts on Windows.
+	- Updated Directory keys in units.json and ships.json to match lowercase names.
+	- Updated unit file references in sector system files to lowercase.
+
+
+2026-11-20  Vega Strike Contributors  <maintainers@vega-strike.org>
+
 	* (Release 0.1.2)
 	Patch release fixing Windows NSIS installer packaging and version formatting:
 	- Removed invalid NSIS icon definitions from CMakeLists.txt to avoid makensis crash.
