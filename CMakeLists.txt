@@ -29,7 +29,7 @@ CMAKE_MINIMUM_REQUIRED(VERSION 3.21 FATAL_ERROR)
 
 SET(vsuBP_VERSION_MAJOR "0")
 SET(vsuBP_VERSION_MINOR "1")
-SET(vsuBP_VERSION_PATCH "1")
+SET(vsuBP_VERSION_PATCH "2")
 
 # Auto-populate with the git hash of the build
 IF (DEFINED ENV{SHORT_SHA} AND NOT "$ENV{SHORT_SHA}" STREQUAL "")
@@ -201,11 +201,11 @@ SET(CPACK_PACKAGE_INSTALL_DIRECTORY "vsuBP-${CPACK_PACKAGE_VERSION_MAJOR}.${CPAC
 SET(CPACK_CONTACT "maintainers@vega-strike.org")
 
 # Source package filename
-IF (DEFINED ENV{TAG_NAME})
-    SET(vsuBP_PACKAGE_VERSION_STR "$ENV{TAG_NAME}")
-ELSE (DEFINED ENV{TAG_NAME})
+IF (DEFINED ENV{TAG_NAME} AND NOT "$ENV{TAG_NAME}" STREQUAL "")
+    STRING(REGEX REPLACE "^v" "" vsuBP_PACKAGE_VERSION_STR "$ENV{TAG_NAME}")
+ELSE ()
     SET(vsuBP_PACKAGE_VERSION_STR "${vsuBP_VERSION_MAJOR}.${vsuBP_VERSION_MINOR}.${vsuBP_VERSION_PATCH}-0.${vsuBP_GIT_HASH}")
-ENDIF (DEFINED ENV{TAG_NAME})
+ENDIF ()
 
 SET(CPACK_PACKAGE_VERSION "${vsuBP_PACKAGE_VERSION_STR}")
 SET(CPACK_SOURCE_PACKAGE_FILE_NAME "${CPACK_PACKAGE_NAME}_${vsuBP_PACKAGE_VERSION_STR}-Source")
@@ -213,8 +213,6 @@ SET(CPACK_SOURCE_GENERATOR "TXZ")
 
 IF (CMAKE_SYSTEM_NAME STREQUAL Windows)
     MESSAGE(STATUS "Configuring Packaging for Windows")
-    SET(CPACK_NSIS_MUI_ICON "${CMAKE_CURRENT_SOURCE_DIR}\\\\vega.ico")
-    SET(CPACK_NSIS_MUI_UNIICON "${CMAKE_CURRENT_SOURCE_DIR}\\\\vega.ico")
     SET(CPACK_NSIS_DISPLAY_NAME "Vega Strike Universe: Black Paralysis")
     SET(CPACK_NSIS_MANIFEST_DPI_AWARE true)
     SET(CPACK_NSIS_ENABLE_UNINSTALL_BEFORE_INSTALL YES)
@@ -223,7 +221,7 @@ IF (CMAKE_SYSTEM_NAME STREQUAL Windows)
     SET(CPACK_NSIS_CONTACT "maintainers@vega-strike.org")
     SET(CPACK_NSIS_MODIFY_PATH OFF)
     SET(CPACK_NSIS_CREATE_ICONS_EXTRA
-        "CreateShortCut '$SMPROGRAMS\\\\$STARTMENU_FOLDER\\\\Vega Strike Universe - Black Paralysis.lnk' 'C:\\\\Program Files\\\\VegaStrike-0.11\\\\bin\\\\vegastrike-engine.exe' -D\"$INSTDIR\\\\share\\\\black-paralysis\""
+        "CreateShortCut '$SMPROGRAMS\\\\$STARTMENU_FOLDER\\\\Vega Strike Universe - Black Paralysis.lnk' 'C:\\\\Program Files\\\\VegaStrike-0.11\\\\bin\\\\vegastrike-engine.exe' -D\"$INSTDIR\\share\\black-paralysis\""
     )
     SET(CPACK_NSIS_DELETE_ICONS_EXTRA
         "Delete '$SMPROGRAMS\\\\$START_MENU\\\\Vega Strike Universe - Black Paralysis.lnk'"

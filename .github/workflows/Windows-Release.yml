@@ -62,6 +62,15 @@ jobs:
         shell: pwsh
         run: script/package.ps1
 
+      - name: Dump NSIS log on failure
+        if: failure()
+        shell: pwsh
+        run: |
+          Get-ChildItem -Path . -Filter "NSISOutput.log" -Recurse -ErrorAction SilentlyContinue | ForEach-Object {
+            Write-Host "=== $($_.FullName) ==="
+            Get-Content $_.FullName
+          }
+
       - name: Upload the artifacts
         uses: softprops/action-gh-release@v2
         if: startsWith(github.ref, 'refs/tags/')
