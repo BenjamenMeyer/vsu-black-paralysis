@@ -1,5 +1,15 @@
 2026-11-20  Vega Strike Contributors  <maintainers@vega-strike.org>
 
+	* (Release 0.1.2)
+	Patch release fixing Windows NSIS installer packaging and version formatting:
+	- Removed invalid NSIS icon definitions from CMakeLists.txt to avoid makensis crash.
+	- Stripped leading "v" prefix from TAG_NAME for standard SemVer package naming.
+	- Corrected path delimiter escaping in Windows shortcut creation parameters.
+	- Added robust error handling and NSISOutput.log failure logging in CI.
+
+
+2026-11-20  Vega Strike Contributors  <maintainers@vega-strike.org>
+
 	* (Release 0.1.1)
 	Patch release fixing Windows NSIS installer packaging:
 	- Corrected CPACK_NSIS_MUI_ICON and CPACK_NSIS_MUI_UNIICON variables in CMakeLists.txt.

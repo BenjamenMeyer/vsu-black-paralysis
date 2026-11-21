@@ -17,16 +17,17 @@
 # You should have received a copy of the GNU General Public License
 # along with vsuBP.  If not, see <https://www.gnu.org/licenses/>.
 
-try {
-    cmake --build .\build --target package
-}
-catch {
-    Write-Error "Package target build failed: $_"
-    $logFiles = Get-ChildItem -Path .\packages\_CPack_Packages -Filter "NSISOutput.log" -Recurse -ErrorAction SilentlyContinue
+cmake --build .\build --target package
+if ($LASTEXITCODE -ne 0) {
+    Write-Host "Package target build failed with exit code $LASTEXITCODE"
+    $logFiles = Get-ChildItem -Path packages -Filter "NSISOutput.log" -Recurse -ErrorAction SilentlyContinue
+    if (-not $logFiles) {
+        $logFiles = Get-ChildItem -Path build -Filter "NSISOutput.log" -Recurse -ErrorAction SilentlyContinue
+    }
     foreach ($log in $logFiles) {
         Write-Host "=== Output from $($log.FullName) ==="
         Get-Content $log.FullName
     }
-    throw
+    exit $LASTEXITCODE
 }
 
